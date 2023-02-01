@@ -1,0 +1,94 @@
+internal class Program
+{
+  
+
+        private static void Main(string[] args)
+        {
+
+
+
+            var password = "";
+
+
+            string[] dizi = { "Parolanızda rakam olsun mu? Y/N", "Parolanızda küçük harf olsun mu?Y/N ", "Parolanızda büyük harf olsun mu?", "Parolanızda özel karakterler olsun mu?Y/N" };
+            string[] dizi2 = new string[4];
+            for (int i = 0; i < dizi.Length; i++)
+            {
+                Console.WriteLine(dizi[i]);
+                dizi2[i] = i.ToString() + Console.ReadLine().ToLower(); ;
+
+
+                switch (dizi2[i])
+                {
+
+                    case "0y":
+                        password += "1, 2, 3, 4, 5, 6, 7, 8, 9,";
+                        break;
+
+                    case "0n":
+                        password += "";
+                        break;
+                    case "1y":
+                        password += "a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, r, s, t, u, v, y, z,";
+                        break;
+                    case "1n":
+                        password += "";
+                        break;
+                    case "2y":
+                        password += "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, R, S, T, U, V, Y, Z,";
+                        break;
+                    case "2n":
+                        password += "";
+                        break;
+
+                    case "3y":
+                        password += "!, %, &, ?, -, <, >";
+
+                        break;
+                    case "3n":
+                        password += "";
+                        break;
+
+
+                    default:
+                        Console.WriteLine("Lütfen 'y' ya da 'n' şeklinde cevap veriniz");
+                        break;
+                }
+
+
+            }
+
+            char[] ayraclar = { ',', ' ' }; 
+            var kelimeler = password.Split(ayraclar, StringSplitOptions.RemoveEmptyEntries);
+
+           
+
+
+            //char[] MyChar = { ',',' ' };
+            //string NewString = password.Trim(MyChar);
+            //Console.WriteLine(NewString);
+
+
+
+            Console.WriteLine("Parolanın uzunluğunu belirtiniz");
+            int uzunluk = Convert.ToInt32(Console.ReadLine());
+
+            
+
+            string sonuc = string.Empty;
+            Random random = new Random();
+
+            for (int i = 0; i < uzunluk; i++)
+            {
+
+
+                sonuc += kelimeler[random.Next(0, kelimeler.Length)].ToString();
+            }
+            Console.WriteLine("Parolanız:" + sonuc);
+
+
+
+
+
+        }
+    }
